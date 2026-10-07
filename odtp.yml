@@ -1,0 +1,116 @@
+schema-version: "v0.5.0"
+
+component-name: odtp-pysovist
+component-version: "v0.1.0"
+component-license: MIT
+component-type: ephemeral
+component-description: >-
+  Exact 2D isovists from wall segments and 3D view volumes from point clouds, meshes or
+  extruded plans, for a list of query points. Writes one CSV row per point and a JSON
+  record of the pysovist version, all parameters and the sha256 of every input.
+component-authors:
+  - name: Leonel Aguilar
+component-repository:
+  url: "https://github.com/leaguilar/odtp-pysovist"
+tags:
+  - isovist
+  - visibility
+  - point-cloud
+  - view-volume
+
+tools:
+  - tool-name: pysovist
+    tool-authors:
+      - name: pysovist contributors
+    tool-version: "0.1"
+    tool-repository:
+      url: "https://github.com/leaguilar/pysovist"
+    tool-license: MIT
+
+parameters:
+  - name: TASK
+    datatype: str
+    default-value: isovist
+    description: "isovist: exact 2D isovists from PLAN_FILE. volume: view volumes from POINTCLOUD_FILE, MESH_FILE or an extruded PLAN_FILE."
+    options: [isovist, volume]
+    allow-custom-value: false
+  - name: QUERY_FILE
+    datatype: str
+    default-value: points.csv
+    description: CSV in the input folder with columns x, y and, for volumes, z (metres).
+  - name: PLAN_FILE
+    datatype: str
+    default-value: ""
+    description: Wall segments in the input folder (JSON records with start and end, or CSV x0,y0,x1,y1).
+  - name: CLOSE_FILE
+    datatype: str
+    default-value: ""
+    description: Optional JSON polygon [[x, y], ...] that closes the domain, for example the building footprint.
+  - name: POINTCLOUD_FILE
+    datatype: str
+    default-value: ""
+    description: Point cloud in the input folder (.pts, .las, .laz, .e57, .ply, .pcd), for TASK=volume.
+  - name: MESH_FILE
+    datatype: str
+    default-value: ""
+    description: Mesh in the input folder, for TASK=volume.
+  - name: EYE_HEIGHT
+    datatype: str
+    default-value: ""
+    description: Eye height in metres that replaces the z column. Empty keeps z.
+  - name: MAX_DISTANCE
+    datatype: str
+    default-value: ""
+    description: Range limit in metres. Empty means no limit.
+  - name: N_RAYS
+    datatype: int
+    default-value: 262144
+    description: Directions per eye for view volumes (Fibonacci sphere).
+  - name: SPLAT_RADIUS
+    datatype: float
+    default-value: 0.05
+    description: Radius of the ball each cloud point stands for, in metres. Choose it above the scan spacing divided by sqrt(2).
+  - name: ESCAPE
+    datatype: str
+    default-value: clip
+    description: "Rays that meet nothing: clip (count the range limit), zero, or nan."
+    options: [clip, zero, nan]
+    allow-custom-value: false
+  - name: INSIDE
+    datatype: str
+    default-value: nan
+    description: "Eyes inside an occluder: nan or zero."
+    options: [nan, zero]
+    allow-custom-value: false
+  - name: NEAR_CLIP
+    datatype: float
+    default-value: 0.0
+    description: Ignore occluders closer than this to the eye, in metres.
+  - name: FLOOR
+    datatype: float
+    default-value: 0.0
+    description: Floor height of an extruded plan, in metres.
+  - name: CEILING
+    datatype: float
+    default-value: 2.5
+    description: Ceiling height of an extruded plan, in metres.
+  - name: N_JOBS
+    datatype: int
+    default-value: -1
+    description: Processes or threads, -1 for all cores.
+  - name: OUTPUT_PREFIX
+    datatype: str
+    default-value: pysovist
+    description: Prefix of the output files.
+
+data-inputs:
+  - name: inputs
+    type: folder
+    path: /odtp/odtp-input
+    description: Query points and the occluders (plan, closing polygon, point cloud or mesh).
+
+data-output:
+  - name: results
+    type: folder
+    path: /odtp/odtp-output
+    description: "<OUTPUT_PREFIX>_<TASK>.csv with one row per query point, and <OUTPUT_PREFIX>_<TASK>.json with version, parameters and input checksums."
