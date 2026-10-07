@@ -21,7 +21,8 @@ tags:
 tools:
   - tool-name: pysovist
     tool-authors:
-      - name: pysovist contributors
+      - name: Leonel Aguilar
+      - name: Bartu Tuncay
     tool-version: "0.1"
     tool-repository:
       url: "https://github.com/leaguilar/pysovist"
