@@ -23,7 +23,7 @@ tools:
     tool-authors:
       - name: Leonel Aguilar
       - name: Bartu Tuncay
-    tool-version: "0.1"
+    tool-version: "0.1.0"
     tool-repository:
       url: "https://github.com/leaguilar/pysovist"
     tool-license: MIT

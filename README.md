@@ -27,7 +27,7 @@ docker run --rm -v "$PWD/input:/odtp/odtp-input" -v "$PWD/output:/odtp/odtp-outp
     -e TASK=isovist -e PLAN_FILE=walls.json -e QUERY_FILE=points.csv odtp-pysovist
 ```
 
-`tests/run_local.sh` builds the image and checks both tasks on a 10 m x 10 m room: every isovist has an area of 100 m2, and every view volume under a 2.5 m ceiling is 250 m3.
+`tests/run_local.sh` builds the image and checks both tasks on a 10 m x 10 m room: every isovist has an area of 100 m2, and every view volume under a 2.5 m ceiling is 250 m3 to within 0.2 %.
 
 ## Licence
 

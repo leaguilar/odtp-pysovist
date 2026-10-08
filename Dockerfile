@@ -11,9 +11,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends zip libgomp1 li
 COPY odtp-component-client/requirements.txt /tmp/odtp.requirements.txt
 RUN pip install --no-cache-dir -r /tmp/odtp.requirements.txt
 
-# pysovist from PyPI. For a local build before the release, place a wheel in wheels/
-# and pass --build-arg PYSOVIST_SPEC=pysovist[pointcloud,mesh,e57]==<version>.
-ARG PYSOVIST_SPEC="pysovist[pointcloud,mesh,e57]"
+# pysovist from PyPI, pinned so that a component version always runs the same library.
+# To test an unreleased build, place its wheel in wheels/ and pass
+# --build-arg PYSOVIST_SPEC=pysovist[pointcloud,mesh,e57]==<version>.
+ARG PYSOVIST_SPEC="pysovist[pointcloud,mesh,e57]==0.1.0"
 COPY wheels/ /tmp/wheels/
 RUN pip install --no-cache-dir --find-links /tmp/wheels "${PYSOVIST_SPEC}"
 
