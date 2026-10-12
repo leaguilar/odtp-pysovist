@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.2
+
+- Pins pysovist 0.1.2. The tasks and their results are unchanged. The release adds IFC input to the library, which this component does not yet expose.
+
 ## v0.1.1
 
 - `TASK=section`: isovist areas of the horizontal section of `POINTCLOUD_FILE` at eye height, one row per query point, from `pysovist section`.

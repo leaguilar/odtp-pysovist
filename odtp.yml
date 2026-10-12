@@ -1,7 +1,7 @@
 schema-version: "v0.5.0"
 
 component-name: odtp-pysovist
-component-version: "v0.1.1"
+component-version: "v0.1.2"
 component-license: MIT
 component-type: ephemeral
 component-description: >-
@@ -24,7 +24,7 @@ tools:
     tool-authors:
       - name: Leonel Aguilar
       - name: Bartu Tuncay
-    tool-version: "0.1.1"
+    tool-version: "0.1.2"
     tool-repository:
       url: "https://github.com/leaguilar/pysovist"
     tool-license: MIT

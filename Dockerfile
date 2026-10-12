@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r /tmp/odtp.requirements.txt
 # pysovist from PyPI, pinned so that a component version always runs the same library.
 # To test an unreleased build, place its wheel in wheels/ and pass
 # --build-arg PYSOVIST_SPEC=pysovist[pointcloud,mesh,e57]==<version>.
-ARG PYSOVIST_SPEC="pysovist[pointcloud,mesh,e57]==0.1.1"
+ARG PYSOVIST_SPEC="pysovist[pointcloud,mesh,e57]==0.1.2"
 COPY wheels/ /tmp/wheels/
 RUN pip install --no-cache-dir --find-links /tmp/wheels "${PYSOVIST_SPEC}"
 
