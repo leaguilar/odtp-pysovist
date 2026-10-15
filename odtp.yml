@@ -1,7 +1,7 @@
 schema-version: "v0.5.0"
 
 component-name: odtp-pysovist
-component-version: "v0.1.2"
+component-version: "v0.2.1"
 component-license: MIT
 component-type: ephemeral
 component-description: >-
@@ -24,7 +24,7 @@ tools:
     tool-authors:
       - name: Leonel Aguilar
       - name: Bartu Tuncay
-    tool-version: "0.1.2"
+    tool-version: "0.2.1"
     tool-repository:
       url: "https://github.com/leaguilar/pysovist"
     tool-license: MIT
@@ -47,7 +47,7 @@ parameters:
   - name: CLOSE_FILE
     datatype: str
     default-value: ""
-    description: Optional JSON polygon [[x, y], ...] that closes the domain, for example the building footprint.
+    description: Optional JSON polygon [[x, y], ...] that closes the domain of PLAN_FILE, for example the building footprint. It sets the --close option of the pysovist command line. Every edge of the polygon becomes a wall, and a wall with more than half of its length outside the polygon is refused with a message that names --close. For a plan whose walls extend beyond its outline, pass the outline edges as walls in PLAN_FILE and give no CLOSE_FILE.
   - name: POINTCLOUD_FILE
     datatype: str
     default-value: ""

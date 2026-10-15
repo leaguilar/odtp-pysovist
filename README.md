@@ -16,7 +16,7 @@ Put the files in the component input folder and name them in the parameters:
 |---|---|
 | `QUERY_FILE` | CSV with columns `x`, `y` and, for volumes and sections, `z` (metres) |
 | `PLAN_FILE` | wall segments: JSON records `{"start": [x, y], "end": [x, y]}`, or CSV `x0,y0,x1,y1` |
-| `CLOSE_FILE` | optional JSON polygon `[[x, y], ...]` that closes the domain, for example the building footprint |
+| `CLOSE_FILE` | optional JSON polygon `[[x, y], ...]` that closes the domain of `PLAN_FILE`, for example the building footprint. It sets the `--close` option of the pysovist command line. Every edge of the polygon becomes a wall, and a wall with more than half of its length outside the polygon is refused with a message that names `--close`. For a plan whose walls extend beyond its outline, pass the outline edges as walls in `PLAN_FILE` and give no `CLOSE_FILE`. |
 | `POINTCLOUD_FILE` | `.pts`, `.las`, `.laz`, `.e57`, `.ply` or `.pcd` |
 | `MESH_FILE` | any mesh format open3d reads |
 
