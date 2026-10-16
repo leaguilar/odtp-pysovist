@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.3.0
+
+- Pins pysovist 0.3.0. The tasks, their parameters, the columns of the CSV and the fields of the JSON record are unchanged, and every input that v0.2.1 accepts gives the same values.
+- `PLAN_FILE` also takes a JSON list of segments `[[x0, y0], [x1, y1]]`. A JSON plan in neither format, a file that is not JSON in UTF-8, and a coordinate that is missing or not finite stop the run with a message that names the file, both formats or the record counted from 1.
+
 ## v0.2.1
 
 - Pins pysovist 0.2.1. The tasks, their parameters, the columns of the CSV and the fields of the JSON record are unchanged.

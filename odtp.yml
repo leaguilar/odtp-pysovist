@@ -1,7 +1,7 @@
 schema-version: "v0.5.0"
 
 component-name: odtp-pysovist
-component-version: "v0.2.1"
+component-version: "v0.3.0"
 component-license: MIT
 component-type: ephemeral
 component-description: >-
@@ -24,7 +24,7 @@ tools:
     tool-authors:
       - name: Leonel Aguilar
       - name: Bartu Tuncay
-    tool-version: "0.2.1"
+    tool-version: "0.3.0"
     tool-repository:
       url: "https://github.com/leaguilar/pysovist"
     tool-license: MIT
@@ -43,7 +43,7 @@ parameters:
   - name: PLAN_FILE
     datatype: str
     default-value: ""
-    description: Wall segments in the input folder (JSON records with start and end, or CSV x0,y0,x1,y1).
+    description: Wall segments in the input folder (JSON records with start and end, a JSON list of segments [[x0, y0], [x1, y1]], or CSV x0,y0,x1,y1).
   - name: CLOSE_FILE
     datatype: str
     default-value: ""
